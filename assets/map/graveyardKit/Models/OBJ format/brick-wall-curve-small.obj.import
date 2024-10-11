@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dj3g68c5d6blk"
+path="res://.godot/imported/brick-wall-curve-small.obj-af33ef48cbcca157c887084364ef6544.mesh"
+
+[deps]
+
+files=["res://.godot/imported/brick-wall-curve-small.obj-af33ef48cbcca157c887084364ef6544.mesh"]
+
+source_file="res://assets/map/graveyardKit/Models/OBJ format/brick-wall-curve-small.obj"
+dest_files=["res://.godot/imported/brick-wall-curve-small.obj-af33ef48cbcca157c887084364ef6544.mesh", "res://.godot/imported/brick-wall-curve-small.obj-af33ef48cbcca157c887084364ef6544.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

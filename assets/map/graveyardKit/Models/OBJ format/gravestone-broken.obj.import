@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dhyftsuwx3yn6"
+path="res://.godot/imported/gravestone-broken.obj-9953fa97cf1f6a1c5e34d9822a2fdd3a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/gravestone-broken.obj-9953fa97cf1f6a1c5e34d9822a2fdd3a.mesh"]
+
+source_file="res://assets/map/graveyardKit/Models/OBJ format/gravestone-broken.obj"
+dest_files=["res://.godot/imported/gravestone-broken.obj-9953fa97cf1f6a1c5e34d9822a2fdd3a.mesh", "res://.godot/imported/gravestone-broken.obj-9953fa97cf1f6a1c5e34d9822a2fdd3a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

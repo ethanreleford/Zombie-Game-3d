@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c28pfhjd2qkwa"
+path="res://.godot/imported/iron-fence-border.obj-c8a8e3880aea457809e368e3e947cce3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/iron-fence-border.obj-c8a8e3880aea457809e368e3e947cce3.mesh"]
+
+source_file="res://assets/map/graveyardKit/Models/OBJ format/iron-fence-border.obj"
+dest_files=["res://.godot/imported/iron-fence-border.obj-c8a8e3880aea457809e368e3e947cce3.mesh", "res://.godot/imported/iron-fence-border.obj-c8a8e3880aea457809e368e3e947cce3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

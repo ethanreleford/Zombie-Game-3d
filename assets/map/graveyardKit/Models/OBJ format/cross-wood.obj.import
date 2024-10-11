@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1n005yhau3cf"
+path="res://.godot/imported/cross-wood.obj-77e4ed84f6612c6e347452d3fa3edb9a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cross-wood.obj-77e4ed84f6612c6e347452d3fa3edb9a.mesh"]
+
+source_file="res://assets/map/graveyardKit/Models/OBJ format/cross-wood.obj"
+dest_files=["res://.godot/imported/cross-wood.obj-77e4ed84f6612c6e347452d3fa3edb9a.mesh", "res://.godot/imported/cross-wood.obj-77e4ed84f6612c6e347452d3fa3edb9a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

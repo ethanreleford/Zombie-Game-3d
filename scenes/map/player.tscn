@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://cn00vlg5b2bci"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ifraq"]
+[ext_resource type="PackedScene" uid="uid://c2y6glllck1pi" path="res://scenes/components/ray_cast_component.tscn" id="2_8q48w"]
+[ext_resource type="Script" path="res://scripts/player/playerCamera.gd" id="2_vbo7b"]
+[ext_resource type="PackedScene" uid="uid://dk54cd7dmc3i2" path="res://scenes/components/health_component.tscn" id="3_qjaqm"]
+[ext_resource type="PackedScene" uid="uid://cf0i8j8q843uv" path="res://scenes/components/hurt_box_component.tscn" id="4_f4v2x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mgc5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ocoj6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h7gc"]
+albedo_color = Color(0, 0.658824, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8marb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8pga8"]
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_ifraq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_1mgc5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473501, 0)
+script = ExtResource("2_vbo7b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.473501, 0)
+mesh = SubResource("CapsuleMesh_ocoj6")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5h7gc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.601869, -0.579227)
+mesh = SubResource("SphereMesh_8marb")
+skeleton = NodePath("../..")
+
+[node name="RayCastComponent" parent="Camera3D" instance=ExtResource("2_8q48w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.173715, 0.378928)
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_qjaqm")]
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_f4v2x")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("CapsuleShape3D_8pga8")

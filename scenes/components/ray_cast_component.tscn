@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2y6glllck1pi"]
+
+[ext_resource type="Script" path="res://scripts/components/ray_cast_component.gd" id="1_ey1rw"]
+
+[node name="RayCastComponent" type="RayCast3D"]
+target_position = Vector3(1000, 0, 0)
+collide_with_areas = true
+debug_shape_thickness = 3
+script = ExtResource("1_ey1rw")

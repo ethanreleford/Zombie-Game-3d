@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://17irsq5absvm"
+path="res://.godot/imported/iron-fence-damaged.obj-c3ca00ed87468a120215dc968088809f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/iron-fence-damaged.obj-c3ca00ed87468a120215dc968088809f.mesh"]
+
+source_file="res://assets/map/graveyardKit/Models/OBJ format/iron-fence-damaged.obj"
+dest_files=["res://.godot/imported/iron-fence-damaged.obj-c3ca00ed87468a120215dc968088809f.mesh", "res://.godot/imported/iron-fence-damaged.obj-c3ca00ed87468a120215dc968088809f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
