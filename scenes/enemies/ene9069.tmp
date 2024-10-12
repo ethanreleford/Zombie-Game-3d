@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcnpecnitbkw7"]
+
+[ext_resource type="PackedScene" uid="uid://dk54cd7dmc3i2" path="res://scenes/components/health_component.tscn" id="1_1hrfd"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_wyvcj"]
+[ext_resource type="PackedScene" uid="uid://cf0i8j8q843uv" path="res://scenes/components/hurt_box_component.tscn" id="2_8fbbf"]
+[ext_resource type="PackedScene" uid="uid://c6il1d0m46hur" path="res://scenes/components/velocity_component.tscn" id="4_7kjbs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3q60o"]
+albedo_color = Color(1, 0.152941, 0, 1)
+metallic = 0.83
+metallic_specular = 0.65
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6cmoa"]
+material = SubResource("StandardMaterial3D_3q60o")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxogm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a684l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_b75rm"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_wyvcj")
+velocity_component = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_6cmoa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qxogm")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_1hrfd")]
+health = 50
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_8fbbf")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent"]
+shape = SubResource("CapsuleShape3D_a684l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.248019, -0.539906)
+mesh = SubResource("SphereMesh_b75rm")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_7kjbs")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcnpecnitbkw7"]
+[gd_scene load_steps=10 format=3 uid="uid://bcnpecnitbkw7"]
 
 [ext_resource type="PackedScene" uid="uid://dk54cd7dmc3i2" path="res://scenes/components/health_component.tscn" id="1_1hrfd"]
 [ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_wyvcj"]
 [ext_resource type="PackedScene" uid="uid://cf0i8j8q843uv" path="res://scenes/components/hurt_box_component.tscn" id="2_8fbbf"]
+[ext_resource type="PackedScene" uid="uid://c6il1d0m46hur" path="res://scenes/components/velocity_component.tscn" id="4_7kjbs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3q60o"]
 albedo_color = Color(1, 0.152941, 0, 1)
@@ -37,8 +38,9 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent"]
 shape = SubResource("CapsuleShape3D_a684l")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.248019, -0.539906)
 mesh = SubResource("SphereMesh_b75rm")
+
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("enemyObj") instance=ExtResource("4_7kjbs")]
+enemyObj = NodePath("..")

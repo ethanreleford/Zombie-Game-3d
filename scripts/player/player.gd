@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	movementController()
 	# Physics Function
 	move_and_slide()
+	
 
 func movementController():
 	# Store input direction as a vector
@@ -57,7 +58,6 @@ func sprint():
 
 func quit():
 	if Input.is_action_just_pressed("quit"):
-		$"../".exit_game(name.to_int())
 		get_tree().quit()
 
 func _enter_tree() -> void:
