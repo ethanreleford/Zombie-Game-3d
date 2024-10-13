@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn00vlg5b2bci"]
+[gd_scene load_steps=13 format=3 uid="uid://cn00vlg5b2bci"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ifraq"]
 [ext_resource type="PackedScene" uid="uid://c2y6glllck1pi" path="res://scenes/components/ray_cast_component.tscn" id="2_8q48w"]
 [ext_resource type="Script" path="res://scripts/player/playerCamera.gd" id="2_vbo7b"]
 [ext_resource type="PackedScene" uid="uid://dk54cd7dmc3i2" path="res://scenes/components/health_component.tscn" id="3_qjaqm"]
 [ext_resource type="PackedScene" uid="uid://cf0i8j8q843uv" path="res://scenes/components/hurt_box_component.tscn" id="4_f4v2x"]
+[ext_resource type="Script" path="res://scripts/player/interactable_ray_cast.gd" id="4_wmsqy"]
+[ext_resource type="PackedScene" uid="uid://d3f4swwk4taps" path="res://scenes/components/gun_component.tscn" id="6_v3u61"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mgc5"]
 
@@ -41,6 +43,25 @@ skeleton = NodePath("../..")
 [node name="RayCastComponent" parent="Camera3D" instance=ExtResource("2_8q48w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.173715, 0.378928)
 
+[node name="InteractableRayCast" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+target_position = Vector3(0, 0, 4)
+script = ExtResource("4_wmsqy")
+
+[node name="Interactable Text" type="Label" parent="Camera3D/InteractableRayCast"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -11.5
+offset_right = 29.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hold 'E' to pickup"
+
 [node name="HealthComponent" parent="." instance=ExtResource("3_qjaqm")]
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_f4v2x")]
@@ -48,3 +69,5 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("CapsuleShape3D_8pga8")
+
+[node name="GunComponent" parent="." instance=ExtResource("6_v3u61")]

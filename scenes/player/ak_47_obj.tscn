@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwv8xo0d6wfli"]
+
+[ext_resource type="Script" path="res://scripts/guns/ak_47_obj.gd" id="1_6x6g0"]
+[ext_resource type="PackedScene" uid="uid://bi3irg0y6ja2q" path="res://scenes/components/ammo_component.tscn" id="2_843sh"]
+
+[node name="ak47Obj" type="Node3D"]
+script = ExtResource("1_6x6g0")
+
+[node name="AmmoComponent" parent="." instance=ExtResource("2_843sh")]
