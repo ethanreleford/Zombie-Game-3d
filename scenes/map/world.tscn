@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2r6fnjdo3p30"]
+[gd_scene load_steps=16 format=3 uid="uid://2r6fnjdo3p30"]
 
 [ext_resource type="Texture2D" uid="uid://3vkhjk8p5qhu" path="res://assets/map/kenney_prototype-textures/PNG/Green/texture_01.png" id="1_0t6or"]
 [ext_resource type="Texture2D" uid="uid://bumru6cdma5pu" path="res://assets/map/skybox.png" id="1_auqxr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cn00vlg5b2bci" path="res://scenes/player/player.tscn" id="4_e3tu0"]
 [ext_resource type="PackedScene" uid="uid://bcnpecnitbkw7" path="res://scenes/enemies/enemy.tscn" id="5_1etpa"]
 [ext_resource type="PackedScene" uid="uid://vnokrk8p5kqv" path="res://scenes/guns/ak_47.tscn" id="7_1oe6w"]
+[ext_resource type="PackedScene" uid="uid://vrqqonq1dpdb" path="res://scenes/guns/m_4a_4.tscn" id="8_m2qyv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yrtkx"]
 panorama = ExtResource("1_auqxr")
@@ -184,3 +185,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7984, 3.8501)
 
 [node name="ak47" parent="." instance=ExtResource("7_1oe6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98012, 17.1287)
+
+[node name="m4a4" parent="." instance=ExtResource("8_m2qyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05744, 21.5612)

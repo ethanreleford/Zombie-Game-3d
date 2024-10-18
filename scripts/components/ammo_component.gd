@@ -7,11 +7,12 @@ var activeAmmoCurrentSize
 @export var baseDamage = 10
 
 func initializeAmmo():
+	print("initialize weapon compoenent")
 	reserveAmmoCurrentSize = reserveAmmoMaxSize
 	activeAmmoCurrentSize = activeAmmoMaxSize
 
 func _ready() -> void:
-	pass 
+	initializeAmmo()
 
 func _process(delta: float) -> void:
 	pass

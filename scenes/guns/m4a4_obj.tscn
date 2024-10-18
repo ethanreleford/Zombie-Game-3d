@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://daksa70w447o0"]
+
+[ext_resource type="Script" path="res://scripts/guns/m4a4_obj.gd" id="1_r75c4"]
+[ext_resource type="PackedScene" uid="uid://bi3irg0y6ja2q" path="res://scenes/components/ammo_component.tscn" id="2_41un3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_akoa7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45r0t"]
+albedo_color = Color(0.301961, 0.486275, 1, 1)
+
+[node name="m4a4Obj" type="Node3D"]
+script = ExtResource("1_r75c4")
+
+[node name="AmmoComponent" parent="." instance=ExtResource("2_41un3")]
+reserveAmmoMaxSize = 150
+activeAmmoMaxSize = 10
+baseDamage = 25
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_akoa7")
+surface_material_override/0 = SubResource("StandardMaterial3D_45r0t")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn00vlg5b2bci"]
+[gd_scene load_steps=12 format=3 uid="uid://cn00vlg5b2bci"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ifraq"]
 [ext_resource type="PackedScene" uid="uid://c2y6glllck1pi" path="res://scenes/components/ray_cast_component.tscn" id="2_8q48w"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cf0i8j8q843uv" path="res://scenes/components/hurt_box_component.tscn" id="4_f4v2x"]
 [ext_resource type="Script" path="res://scripts/player/interactable_ray_cast.gd" id="4_wmsqy"]
 [ext_resource type="PackedScene" uid="uid://d3f4swwk4taps" path="res://scenes/components/gun_component.tscn" id="6_v3u61"]
+[ext_resource type="PackedScene" uid="uid://daksa70w447o0" path="res://scenes/guns/m4a4_obj.tscn" id="7_wwbkj"]
+[ext_resource type="PackedScene" uid="uid://cwv8xo0d6wfli" path="res://scenes/player/ak_47_obj.tscn" id="8_al7r1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mgc5"]
 
@@ -15,15 +17,13 @@
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ifraq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_1mgc5")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708798, 0)
 script = ExtResource("2_vbo7b")
 
 [node name="RayCastComponent" parent="Camera3D" instance=ExtResource("2_8q48w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.173715, 0.378928)
+collision_mask = 2
 
 [node name="InteractableRayCast" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -44,6 +44,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Hold 'E' to pickup"
 
+[node name="GunComponent" parent="Camera3D" node_paths=PackedStringArray("start1", "start2") instance=ExtResource("6_v3u61")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.218761, -3.08353)
+start1 = NodePath("ak47Obj")
+start2 = NodePath("m4a4Obj")
+
+[node name="ak47Obj" parent="Camera3D/GunComponent" instance=ExtResource("8_al7r1")]
+
+[node name="m4a4Obj" parent="Camera3D/GunComponent" instance=ExtResource("7_wwbkj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_1mgc5")
+
 [node name="HealthComponent" parent="." instance=ExtResource("3_qjaqm")]
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_f4v2x")]
@@ -51,5 +63,3 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("CapsuleShape3D_8pga8")
-
-[node name="GunComponent" parent="." instance=ExtResource("6_v3u61")]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://vrqqonq1dpdb"]
+
+[ext_resource type="Script" path="res://scripts/guns/m4a4.gd" id="1_6ddmg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y5rpr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jvw8s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8q1ft"]
+
+[node name="m4a4" type="StaticBody3D"]
+script = ExtResource("1_6ddmg")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_y5rpr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jvw8s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8q1ft")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

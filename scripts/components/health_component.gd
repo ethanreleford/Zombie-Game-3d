@@ -16,7 +16,11 @@ func healHealth(heal : int):
 		health += heal
 
 func takeDamage(damage : int):
-	if damage > health:
+	print("entered take damage of:")
+	print(self)
+	if damage >= health:
 		get_parent().queue_free()
+		print(health)
 	else:
 		health -= damage
+	print(health)

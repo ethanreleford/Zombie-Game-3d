@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwv8xo0d6wfli"]
+[gd_scene load_steps=5 format=3 uid="uid://cwv8xo0d6wfli"]
 
 [ext_resource type="Script" path="res://scripts/guns/ak_47_obj.gd" id="1_6x6g0"]
 [ext_resource type="PackedScene" uid="uid://bi3irg0y6ja2q" path="res://scenes/components/ammo_component.tscn" id="2_843sh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sglt8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4bxq"]
+albedo_color = Color(0.843137, 0.4, 0.521569, 1)
 
 [node name="ak47Obj" type="Node3D"]
 script = ExtResource("1_6x6g0")
 
 [node name="AmmoComponent" parent="." instance=ExtResource("2_843sh")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_sglt8")
+surface_material_override/0 = SubResource("StandardMaterial3D_g4bxq")
