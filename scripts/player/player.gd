@@ -5,8 +5,9 @@ const BASE_SPEED : float = 5.0
 const SPRINT_SPEED : float = 2.0
 var SPEED : float = 5.0
 const JUMP_VELOCITY : float = 4.5
+@onready var camera = $Camera3D
 
-@onready var camera = $Camera3D  # Reference to Camera Path
+
 
 func _physics_process(delta: float) -> void:
 	# Jump Function
@@ -19,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	movementController()
 	# Physics Function
 	move_and_slide()
-	
+
 
 func movementController():
 	# Store input direction as a vector

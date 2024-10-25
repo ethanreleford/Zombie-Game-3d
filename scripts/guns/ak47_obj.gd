@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var ammo_component: Node3D = $AmmoComponent
+@export var ammo_component: Node3D 
 
 func _ready() -> void:
 	pass 

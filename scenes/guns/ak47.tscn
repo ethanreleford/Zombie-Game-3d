@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://vnokrk8p5kqv"]
+
+[ext_resource type="PackedScene" uid="uid://gmk825shprqf" path="res://scenes/components/interactable_component.tscn" id="1_6ojrv"]
+[ext_resource type="Script" path="res://scripts/guns/ak47.gd" id="1_xulue"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fnexb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j81qg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2u0g"]
+albedo_color = Color(1, 0.0901961, 1, 1)
+
+[node name="ak47" type="StaticBody3D"]
+script = ExtResource("1_xulue")
+metadata/name = "AK-47"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fnexb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_j81qg")
+surface_material_override/0 = SubResource("StandardMaterial3D_a2u0g")
+
+[node name="InteractableComponent" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("1_6ojrv")]
+gun = NodePath("..")

@@ -40,9 +40,9 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxComponent"]
 shape = SubResource("CapsuleShape3D_a684l")
 
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("enemyObj") instance=ExtResource("4_7kjbs")]
+enemyObj = NodePath("..")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.248019, -0.539906)
 mesh = SubResource("SphereMesh_b75rm")
-
-[node name="VelocityComponent" parent="." node_paths=PackedStringArray("enemyObj") instance=ExtResource("4_7kjbs")]
-enemyObj = NodePath("..")

@@ -1,12 +1,12 @@
 extends Node3D
 
 var currentWeapon
-@export var start1 : Node3D
-@export var start2 : Node3D
+#@export var start1 : Node3D
+#@export var start2 : Node3D
 var weaponsList = [null, null]
 var canShoot : bool = true
 @onready var ray_cast_component: RayCast3D = $"../RayCastComponent"
-
+var weapon_dictionary_script = preload("res://scripts/guns/weapon_dictionary.gd").new()
 
 func _ready() -> void:
 	initializePlayerWeapons()
@@ -33,11 +33,11 @@ func weaponKeybinds():
 
 # Shoot Function
 func shoot():
-	#print("Shoot function entered")
-	#print(currentWeapon.ammo_component.activeAmmoMaxSize)
-	#print(currentWeapon.ammo_component.activeAmmoCurrentSize)
-	#print(currentWeapon.ammo_component.reserveAmmoMaxSize)
-	#print(currentWeapon.ammo_component.reserveAmmoCurrentSize)
+	print("Shoot function entered")
+	print(currentWeapon.ammo_component.activeAmmoMaxSize)
+	print(currentWeapon.ammo_component.activeAmmoCurrentSize)
+	print(currentWeapon.ammo_component.reserveAmmoMaxSize)
+	print(currentWeapon.ammo_component.reserveAmmoCurrentSize)
 	# If checkActiveAmmoEmpty() is false and canShoot is true, SHOOT!
 	if !checkActiveAmmoEmpty() and canShoot:
 		print("successfully shoot")
@@ -72,15 +72,39 @@ func reload():
 func ammuntionUsed():
 	currentWeapon.ammo_componenet.activeAmmoCurrentSize -= 1
 
-# Function to pick up a new weapon and swap it out
-func swapGun(newWeapon):
-	print("swapgun")
-	# find index of currentWeapon to swap out
+# Function to pick up a new weapon and swap it out 
+# Effectively deleting currently held weapon to pick up new one
+func swapWeapon(newWeaponScene):
+	print("swapWeapon")
+	
+	# Find index of currentWeapon to swap out
 	var index = weaponsList.find(currentWeapon)
-	# set weaponsList[index] to newWeapon picked up
-	weaponsList[index] = newWeapon
-	# set current weapon to newWeapon in array
-	currentWeapon = weaponsList[index]
+	
+	# Instantiate the new weapon scene
+	var newWeaponInstance = newWeaponScene.instantiate()  # Create an instance of the new weapon
+	
+	for i in range(weaponsList.size()):
+		if weaponsList[i] == null:
+			# Set the current weapon to the new instance
+			currentWeapon = newWeaponInstance
+			# Add the new weapon instance to the player node
+			add_child(currentWeapon)
+			weaponsList[i] = currentWeapon
+			print(weaponsList)
+			return
+
+	# If there's a current weapon, free it
+	if currentWeapon:
+		currentWeapon.queue_free()  # Optionally remove the current weapon from the scene
+	# Set the current weapon to the new instance
+	currentWeapon = newWeaponInstance
+	# Add the new weapon instance to the player node
+	add_child(currentWeapon)
+	# Update the weaponsList with the new weapon instance
+	weaponsList[index] = currentWeapon
+	print(weaponsList)
+
+
 
 # Function to switch between weapons the player currently has
 func swapCurrentWeapon(weapon):
@@ -90,7 +114,7 @@ func swapCurrentWeapon(weapon):
 # Function to initialize player weapons
 func initializePlayerWeapons():
 	print("initializePlayerWeapons")
-	weaponsList = [start1, null]
+	weaponsList = [null, null]
 	currentWeapon = weaponsList[0]
 
 # Returns true if reserveAmmo == 0, else return false if not empty
@@ -111,3 +135,12 @@ func canReloadWeapon():
 	if currentWeapon.ammo_component.activeAmmoCurrentSize < currentWeapon.ammo_component.activeAmmoMaxSize:
 		return true
 	return false
+
+
+# Function to handle which weapon to add
+func findWeaponID(ID: String):
+	var newWeaponScene = weapon_dictionary_script.getWeaponScene(ID)  # Use the function to get the weapon scene
+	if newWeaponScene:
+		swapWeapon(newWeaponScene)  # Swap to the new weapon scene if it exists
+	else:
+		print("Weapon ID not found: " + ID)

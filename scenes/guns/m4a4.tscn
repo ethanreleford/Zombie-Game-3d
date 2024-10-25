@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://vrqqonq1dpdb"]
+
+[ext_resource type="Script" path="res://scripts/guns/m4a4.gd" id="1_6ddmg"]
+[ext_resource type="PackedScene" uid="uid://gmk825shprqf" path="res://scenes/components/interactable_component.tscn" id="1_vhrx8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jvw8s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8q1ft"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5b4ab"]
+albedo_color = Color(0.129412, 1, 1, 1)
+
+[node name="m4a4" type="StaticBody3D"]
+script = ExtResource("1_6ddmg")
+metadata/name = "M4A4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jvw8s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8q1ft")
+surface_material_override/0 = SubResource("StandardMaterial3D_5b4ab")
+
+[node name="InteractableComponent" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("1_vhrx8")]
+gun = NodePath("..")
