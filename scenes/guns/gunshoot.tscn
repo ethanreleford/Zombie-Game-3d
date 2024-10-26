@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://8sh5s4e0dmuk"]
+
+[ext_resource type="PackedScene" uid="uid://sb1apbrwwyt3" path="res://assets/gun/myguns/gunshoot.fbx" id="1_2m53s"]
+
+[node name="gunshoot" instance=ExtResource("1_2m53s")]
+
+[node name="Skeleton3D" parent="Gun_Rig" index="0"]
+bones/0/rotation = Quaternion(0.0100756, -0.000356794, 0.998943, -0.0448483)
+bones/1/rotation = Quaternion(-4.65245e-08, 5.16526e-24, 1.11022e-16, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(2.64928e-19, -0.000136477, -0.000635971)
+bones/2/rotation = Quaternion(-0.806187, -4.49051e-07, 6.1187e-07, 0.59166)
+bones/2/scale = Vector3(1, 1, 1)

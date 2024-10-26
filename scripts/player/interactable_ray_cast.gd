@@ -5,7 +5,7 @@ extends RayCast3D
 
 
 func _physics_process(delta: float) -> void:
-	interactable_text.text = ""
+	interactable_text.text = "."
 	if is_colliding():
 		var detected = get_collider()
 		if "interactable_component" in detected and detected.interactable_component is Interactable:

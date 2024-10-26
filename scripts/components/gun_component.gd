@@ -5,6 +5,9 @@ var weaponsList = [null, null]
 var canShoot : bool = true
 @onready var ray_cast_component: RayCast3D = $"../RayCastComponent"
 var weapon_dictionary_script = preload("res://scripts/guns/weapon_dictionary.gd").new()
+@onready var node_3d = $"../Node3D"
+
+
 
 func _ready() -> void:
 	initializePlayerWeapons()
@@ -38,6 +41,7 @@ func shoot():
 	print(currentWeapon.ammo_component.reserveAmmoCurrentSize)
 	# If checkActiveAmmoEmpty() is false and canShoot is true, SHOOT!
 	if !checkActiveAmmoEmpty() and canShoot:
+		node_3d.play_animations("Scene")
 		print("successfully shoot")
 		# Set canShoot to false to add delay between shoots i.e. firerate
 		canShoot = false

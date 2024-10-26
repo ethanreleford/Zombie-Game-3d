@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://0k200sx888da"]
+
+[ext_resource type="PackedScene" uid="uid://bcbtpjbvou7e1" path="res://scenes/guns/armshoot.tscn" id="1_72xqp"]
+[ext_resource type="Script" path="res://scripts/guns/pistol_animations.gd" id="1_eiohs"]
+[ext_resource type="PackedScene" uid="uid://8sh5s4e0dmuk" path="res://scenes/guns/gunshoot.tscn" id="2_pr34n"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_eiohs")
+
+[node name="armshoot" parent="." instance=ExtResource("1_72xqp")]
+
+[node name="Skeleton3D" parent="armshoot/Arms_Rig" index="0"]
+bones/1/rotation = Quaternion(-0.312451, -0.368548, -0.874038, -0.0510402)
+bones/2/rotation = Quaternion(1.42845e-08, 9.52299e-09, -0.622803, 0.782379)
+bones/3/rotation = Quaternion(0.459744, -0.583187, 0.0535165, 0.667581)
+bones/4/rotation = Quaternion(-0.402892, -3.58055e-08, -2.49303e-08, 0.915248)
+bones/5/rotation = Quaternion(-0.402892, 2.51847e-08, -5.02064e-08, 0.915247)
+bones/6/rotation = Quaternion(-0.402892, -1.6281e-08, 4.55678e-08, 0.915247)
+bones/7/rotation = Quaternion(-0.402892, 3.67595e-08, -2.74742e-08, 0.915248)
+bones/8/rotation = Quaternion(-0.402892, -7.12294e-09, -2.1027e-09, 0.915248)
+bones/9/rotation = Quaternion(-0.402892, 7.12295e-09, -3.49787e-10, 0.915248)
+bones/10/rotation = Quaternion(-0.402892, -3.58055e-08, -2.49303e-08, 0.915248)
+bones/11/rotation = Quaternion(-0.402892, 9.66685e-09, -1.7394e-08, 0.915247)
+bones/12/rotation = Quaternion(-0.402892, -2.84918e-08, 2.65242e-08, 0.915247)
+bones/13/rotation = Quaternion(-0.402892, -3.58055e-08, -2.49303e-08, 0.915248)
+bones/14/rotation = Quaternion(-0.402892, -2.00969e-08, -6.04178e-10, 0.915248)
+bones/15/rotation = Quaternion(-0.402892, -6.86855e-09, 1.11296e-09, 0.915247)
+bones/16/rotation = Quaternion(-0.147975, 0.0946723, -0.173484, 0.969043)
+bones/17/rotation = Quaternion(-0.16343, -1.13282e-08, -2.17123e-08, 0.986555)
+bones/18/rotation = Quaternion(-0.16343, 7.17451e-08, -4.07814e-07, 0.986555)
+bones/19/rotation = Quaternion(-0.547432, 0.23673, 0.797631, 0.0897903)
+bones/20/rotation = Quaternion(-4.36141e-08, 2.74146e-08, 0.74738, 0.664397)
+bones/21/rotation = Quaternion(0.147132, 0.189166, -0.139633, 0.960766)
+bones/22/rotation = Quaternion(-0.306117, 3.05715e-10, 2.20114e-09, 0.951994)
+bones/23/rotation = Quaternion(-0.306118, -1.66309e-08, 5.50286e-08, 0.951994)
+bones/24/rotation = Quaternion(-0.306118, 1.98103e-08, -5.25829e-08, 0.951994)
+bones/25/rotation = Quaternion(-0.502897, -4.71401e-09, 2.89575e-08, 0.864347)
+bones/26/rotation = Quaternion(-0.502897, 8.08116e-10, -2.69372e-09, 0.864347)
+bones/27/rotation = Quaternion(-0.502897, -6.7343e-10, -8.08116e-09, 0.864347)
+bones/28/rotation = Quaternion(-0.502896, -1.81826e-09, 1.34686e-09, 0.864347)
+bones/29/rotation = Quaternion(-0.502897, -2.96309e-09, 7.54241e-09, 0.864347)
+bones/30/rotation = Quaternion(-0.502897, -4.98338e-09, 8.88927e-09, 0.864347)
+bones/31/rotation = Quaternion(-0.502896, -1.81826e-09, 1.34686e-09, 0.864347)
+bones/32/rotation = Quaternion(-0.502897, 4.04058e-09, -3.77121e-09, 0.864347)
+bones/33/rotation = Quaternion(-0.502897, -6.7343e-10, -9.42801e-10, 0.864347)
+bones/34/rotation = Quaternion(0.0173159, -0.570399, 0.77804, 0.262676)
+bones/35/rotation = Quaternion(-0.561728, 4.50283e-09, 1.35085e-08, 0.827322)
+bones/36/rotation = Quaternion(-0.561728, -2.3077e-07, 3.21952e-07, 0.827322)
+bones/37/rotation = Quaternion(-0.707404, 0, 0, 0.706809)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="armshoot/Arms_Rig/Skeleton3D" index="1"]
+transform = Transform3D(-0.0705109, 0.0878322, -0.993636, -0.0389874, -0.995598, -0.0852385, -0.996749, 0.0327291, 0.0736246, -0.00197738, -0.0027925, -0.00181138)
+bone_name = "hand_R"
+bone_idx = 21
+
+[node name="gunshoot" parent="armshoot/Arms_Rig/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_pr34n")]
+transform = Transform3D(5.23869e-10, -0.01, -7.27596e-10, 5.82077e-11, -4.36557e-10, 0.00999999, -0.01, 2.76486e-10, -6.98492e-10, -0.000320301, 0.00133499, -0.000346727)
+
+[editable path="armshoot"]
+[editable path="armshoot/Arms_Rig/Skeleton3D/BoneAttachment3D/gunshoot"]
