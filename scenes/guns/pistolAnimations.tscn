@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://0k200sx888da"]
+[gd_scene load_steps=5 format=3 uid="uid://0k200sx888da"]
 
 [ext_resource type="PackedScene" uid="uid://bcbtpjbvou7e1" path="res://scenes/guns/armshoot.tscn" id="1_72xqp"]
 [ext_resource type="Script" path="res://scripts/guns/pistol_animations.gd" id="1_eiohs"]
 [ext_resource type="PackedScene" uid="uid://8sh5s4e0dmuk" path="res://scenes/guns/gunshoot.tscn" id="2_pr34n"]
+[ext_resource type="AudioStream" uid="uid://b6a71d3itcg1l" path="res://sounds/pistol-shot-233473.mp3" id="4_auk1t"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_eiohs")
@@ -55,6 +56,10 @@ bone_idx = 21
 
 [node name="gunshoot" parent="armshoot/Arms_Rig/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_pr34n")]
 transform = Transform3D(5.23869e-10, -0.01, -7.27596e-10, 5.82077e-11, -4.36557e-10, 0.00999999, -0.01, 2.76486e-10, -6.98492e-10, -0.000320301, 0.00133499, -0.000346727)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_auk1t")
+volume_db = -25.998
 
 [editable path="armshoot"]
 [editable path="armshoot/Arms_Rig/Skeleton3D/BoneAttachment3D/gunshoot"]

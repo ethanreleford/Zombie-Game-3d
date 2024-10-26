@@ -13,8 +13,6 @@ script = ExtResource("1_r75c4")
 ammo_component = NodePath("AmmoComponent")
 
 [node name="AmmoComponent" parent="." instance=ExtResource("2_41un3")]
-reserveAmmoMaxSize = 10
-activeAmmoMaxSize = 10
 baseDamage = 25
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
