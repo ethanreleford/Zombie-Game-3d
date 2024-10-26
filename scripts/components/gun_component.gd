@@ -1,8 +1,6 @@
 extends Node3D
 
 var currentWeapon
-#@export var start1 : Node3D
-#@export var start2 : Node3D
 var weaponsList = [null, null]
 var canShoot : bool = true
 @onready var ray_cast_component: RayCast3D = $"../RayCastComponent"
@@ -86,30 +84,40 @@ func swapWeapon(newWeaponScene):
 	for i in range(weaponsList.size()):
 		if weaponsList[i] == null:
 			# Set the current weapon to the new instance
-			currentWeapon = newWeaponInstance
+			swapCurrentWeapon(newWeaponInstance)
 			# Add the new weapon instance to the player node
 			add_child(currentWeapon)
 			weaponsList[i] = currentWeapon
+			weaponsList[i].visible = true
 			print(weaponsList)
 			return
+		else:
+			weaponsList[i].visible = false
 
 	# If there's a current weapon, free it
 	if currentWeapon:
 		currentWeapon.queue_free()  # Optionally remove the current weapon from the scene
 	# Set the current weapon to the new instance
-	currentWeapon = newWeaponInstance
+	swapCurrentWeapon(newWeaponInstance)
 	# Add the new weapon instance to the player node
 	add_child(currentWeapon)
 	# Update the weaponsList with the new weapon instance
 	weaponsList[index] = currentWeapon
 	print(weaponsList)
 
-
+# Function to handle the physical mesh showing hiding of weapons
+func swapCurrentWeaponAnimation(oldWeapon, newWeapon):
+	if oldWeapon == null:
+		newWeapon.visible = true
+	else:
+		oldWeapon.visible = false
+		newWeapon.visible = true
 
 # Function to switch between weapons the player currently has
-func swapCurrentWeapon(weapon):
+func swapCurrentWeapon(newWeapon):
+	swapCurrentWeaponAnimation(currentWeapon, newWeapon)
 	print("swapcurrentweapon")
-	currentWeapon = weapon
+	currentWeapon = newWeapon
 
 # Function to initialize player weapons
 func initializePlayerWeapons():

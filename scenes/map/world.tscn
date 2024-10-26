@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://ddv6lhu1x7lq1" path="res://assets/map/groundTextures/Ground (3).png" id="3_bg3ah"]
 [ext_resource type="Texture2D" uid="uid://0p6ujm8b8ho6" path="res://assets/map/kenney_prototype-textures/PNG/Red/texture_08.png" id="3_jrv30"]
 [ext_resource type="PackedScene" uid="uid://cn00vlg5b2bci" path="res://scenes/player/player.tscn" id="4_e3tu0"]
-[ext_resource type="PackedScene" uid="uid://bcnpecnitbkw7" path="res://scenes/enemies/enemy.tscn" id="5_1etpa"]
 [ext_resource type="PackedScene" uid="uid://vnokrk8p5kqv" path="res://scenes/guns/ak47.tscn" id="7_1oe6w"]
 [ext_resource type="PackedScene" uid="uid://vrqqonq1dpdb" path="res://scenes/guns/m4a4.tscn" id="8_m2qyv"]
+[ext_resource type="PackedScene" uid="uid://q5i3r1tcjjcc" path="res://scenes/enemies/enemy_spawn_system.tscn" id="9_7rwob"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yrtkx"]
 panorama = ExtResource("1_auqxr")
@@ -180,11 +180,16 @@ material = SubResource("StandardMaterial3D_53cw3")
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -13.8882, 1, -0.150853)
 material = SubResource("StandardMaterial3D_53cw3")
 
-[node name="Enemy" parent="." instance=ExtResource("5_1etpa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7984, 3.8501)
-
 [node name="ak47" parent="." instance=ExtResource("7_1oe6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06726, 15.7273)
 
 [node name="m4a4" parent="." instance=ExtResource("8_m2qyv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23069, 21.8831)
+
+[node name="EnemySpawnSystem" parent="." instance=ExtResource("9_7rwob")]
+
+[node name="Node3D" type="Node3D" parent="EnemySpawnSystem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4943, 26.8289, -21.1776)
+
+[node name="Node3D2" type="Node3D" parent="EnemySpawnSystem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.478, 8.6414, -40.1244)

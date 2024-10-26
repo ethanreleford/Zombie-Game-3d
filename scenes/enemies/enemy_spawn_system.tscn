@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://q5i3r1tcjjcc"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_spawn_system.gd" id="1_d37bn"]
+
+[node name="EnemySpawnSystem" type="Node3D"]
+script = ExtResource("1_d37bn")
+
+[node name="ZombieSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="ZombieSpawnTimer" to="." method="_on_zombie_spawn_timer_timeout"]
