@@ -5,7 +5,7 @@ var weaponsList = [null, null]
 var canShoot : bool = true
 @onready var ray_cast_component: RayCast3D = $"../RayCastComponent"
 var weapon_dictionary_script = preload("res://scripts/guns/weapon_dictionary.gd").new()
-@onready var node_3d = $"../Node3D"
+@onready var pistol_animations: Node3D = $"../PistolAnimations"
 
 
 
@@ -41,7 +41,7 @@ func shoot():
 	print(currentWeapon.ammo_component.reserveAmmoCurrentSize)
 	# If checkActiveAmmoEmpty() is false and canShoot is true, SHOOT!
 	if !checkActiveAmmoEmpty() and canShoot:
-		node_3d.play_animations("Scene")
+		pistol_animations.play_animations("Scene")
 		print("successfully shoot")
 		# Set canShoot to false to add delay between shoots i.e. firerate
 		canShoot = false
@@ -156,3 +156,9 @@ func findWeaponID(ID: String):
 		swapWeapon(newWeaponScene)  # Swap to the new weapon scene if it exists
 	else:
 		print("Weapon ID not found: " + ID)
+		
+func getCurrentWeaponStats() -> Dictionary:
+	if currentWeapon != null:
+		return {"Active Ammo": currentWeapon.ammo_component.activeAmmoCurrentSize, "Reserve Ammo": currentWeapon.ammo_component.reserveAmmoCurrentSize, "Weapon Name": currentWeapon.ammo_component.weaponName}
+	else:
+		return {"Active Ammo": "0", "Reserve Ammo": "0", "Weapon Name": "Base Gun"}

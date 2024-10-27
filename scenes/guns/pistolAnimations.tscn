@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://8sh5s4e0dmuk" path="res://scenes/guns/gunshoot.tscn" id="2_pr34n"]
 [ext_resource type="AudioStream" uid="uid://b6a71d3itcg1l" path="res://sounds/pistol-shot-233473.mp3" id="4_auk1t"]
 
-[node name="Node3D" type="Node3D"]
+[node name="PistolAnimations" type="Node3D"]
 script = ExtResource("1_eiohs")
 
 [node name="armshoot" parent="." instance=ExtResource("1_72xqp")]
@@ -50,7 +50,7 @@ bones/36/rotation = Quaternion(-0.561728, -2.3077e-07, 3.21952e-07, 0.827322)
 bones/37/rotation = Quaternion(-0.707404, 0, 0, 0.706809)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="armshoot/Arms_Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.0705109, 0.0878322, -0.993636, -0.0389874, -0.995598, -0.0852385, -0.996749, 0.0327291, 0.0736246, -0.00197738, -0.0027925, -0.00181138)
+transform = Transform3D(-0.0705115, 0.0878329, -0.993636, -0.0389862, -0.995598, -0.0852393, -0.996749, 0.0327279, 0.073625, -0.00197738, -0.0027925, -0.00181139)
 bone_name = "hand_R"
 bone_idx = 21
 

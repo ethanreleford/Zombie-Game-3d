@@ -11,8 +11,10 @@ albedo_color = Color(0.843137, 0.4, 0.521569, 1)
 [node name="ak47Obj" type="Node3D" node_paths=PackedStringArray("ammo_component")]
 script = ExtResource("1_6x6g0")
 ammo_component = NodePath("AmmoComponent")
+weaponName = "AK-47"
 
-[node name="AmmoComponent" parent="." instance=ExtResource("2_843sh")]
+[node name="AmmoComponent" parent="." node_paths=PackedStringArray("weaponObject") instance=ExtResource("2_843sh")]
+weaponObject = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

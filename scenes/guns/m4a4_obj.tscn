@@ -11,8 +11,10 @@ albedo_color = Color(0.301961, 0.486275, 1, 1)
 [node name="m4a4Obj" type="Node3D" node_paths=PackedStringArray("ammo_component")]
 script = ExtResource("1_r75c4")
 ammo_component = NodePath("AmmoComponent")
+weaponName = "RA-51"
 
-[node name="AmmoComponent" parent="." instance=ExtResource("2_41un3")]
+[node name="AmmoComponent" parent="." node_paths=PackedStringArray("weaponObject") instance=ExtResource("2_41un3")]
+weaponObject = NodePath("..")
 baseDamage = 25
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
