@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ch63vavy1ffxm"
-path="res://.godot/imported/scene.gltf-6d2b7da854799c0f35395a762f4bf79a.scn"
+uid="uid://x872vxreb2os"
+path="res://.godot/imported/SHERMAN TANK.glb-842c57e1fe66930eb2b2e2ac9dedce11.scn"
 
 [deps]
 
-source_file="res://assets/gun/scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-6d2b7da854799c0f35395a762f4bf79a.scn"]
+source_file="res://assets/SHERMAN TANK.glb"
+dest_files=["res://.godot/imported/SHERMAN TANK.glb-842c57e1fe66930eb2b2e2ac9dedce11.scn"]
 
 [params]
 

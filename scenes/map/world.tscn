@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://2r6fnjdo3p30"]
+[gd_scene load_steps=17 format=3 uid="uid://2r6fnjdo3p30"]
 
 [ext_resource type="Texture2D" uid="uid://3vkhjk8p5qhu" path="res://assets/map/kenney_prototype-textures/PNG/Green/texture_01.png" id="1_0t6or"]
 [ext_resource type="Texture2D" uid="uid://bumru6cdma5pu" path="res://assets/map/skybox.png" id="1_auqxr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://vnokrk8p5kqv" path="res://scenes/guns/ak47.tscn" id="7_1oe6w"]
 [ext_resource type="PackedScene" uid="uid://vrqqonq1dpdb" path="res://scenes/guns/m4a4.tscn" id="8_m2qyv"]
 [ext_resource type="PackedScene" uid="uid://q5i3r1tcjjcc" path="res://scenes/enemies/enemy_spawn_system.tscn" id="9_7rwob"]
+[ext_resource type="PackedScene" uid="uid://x872vxreb2os" path="res://assets/SHERMAN TANK.glb" id="9_h48xb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yrtkx"]
 panorama = ExtResource("1_auqxr")
@@ -46,7 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_gn6b5")
@@ -193,3 +193,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.4943, 26.8289, -21.1776)
 
 [node name="Node3D2" type="Node3D" parent="EnemySpawnSystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.478, 8.6414, -40.1244)
+
+[node name="Node3D3" type="Node3D" parent="EnemySpawnSystem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6957, 26.8289, 30.4722)
+
+[node name="Node3D4" type="Node3D" parent="EnemySpawnSystem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81948, 26.8289, -0.118622)
+
+[node name="SHERMAN TANK" parent="." instance=ExtResource("9_h48xb")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -34.0952, -0.888272, 7.47319)
+
+[editable path="player"]
