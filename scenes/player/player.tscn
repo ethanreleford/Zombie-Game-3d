@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cn00vlg5b2bci"]
+[gd_scene load_steps=13 format=3 uid="uid://cn00vlg5b2bci"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_ifraq"]
 [ext_resource type="PackedScene" uid="uid://c2y6glllck1pi" path="res://scenes/components/ray_cast_component.tscn" id="2_8q48w"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://0k200sx888da" path="res://scenes/guns/pistolAnimations.tscn" id="6_qnxvj"]
 [ext_resource type="PackedScene" uid="uid://d3f4swwk4taps" path="res://scenes/components/gun_component.tscn" id="6_v3u61"]
 [ext_resource type="PackedScene" uid="uid://bluvjvg6tn7cq" path="res://scenes/UI/ui_component.tscn" id="9_4wxee"]
+[ext_resource type="PackedScene" uid="uid://bcf2b77o6nj7e" path="res://scenes/player/point_component.tscn" id="10_man6k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1mgc5"]
 
@@ -17,8 +18,9 @@
 [node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ifraq")
 
-[node name="UIComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_4wxee")]
-player = NodePath("../Camera3D/GunComponent")
+[node name="UIComponent" parent="." node_paths=PackedStringArray("player_weapon_component", "player_point_component") instance=ExtResource("9_4wxee")]
+player_weapon_component = NodePath("../Camera3D/GunComponent")
+player_point_component = NodePath("../PointComponent")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708798, 0)
@@ -52,8 +54,9 @@ grow_vertical = 2
 text = "Hold 'E' to pickup"
 horizontal_alignment = 1
 
-[node name="GunComponent" parent="Camera3D" instance=ExtResource("6_v3u61")]
+[node name="GunComponent" parent="Camera3D" node_paths=PackedStringArray("point_component") instance=ExtResource("6_v3u61")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1000)
+point_component = NodePath("../../PointComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1mgc5")
@@ -65,3 +68,5 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("CapsuleShape3D_8pga8")
+
+[node name="PointComponent" parent="." instance=ExtResource("10_man6k")]

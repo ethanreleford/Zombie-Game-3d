@@ -9,7 +9,7 @@ var weaponName: String
 @export var baseDamage = 10
 
 func initializeAmmo():
-	print("initialize weapon compoenent")
+	#print("initialize weapon compoenent")
 	reserveAmmoCurrentSize = reserveAmmoMaxSize
 	activeAmmoCurrentSize = activeAmmoMaxSize
 	weaponName = weaponObject.weaponName

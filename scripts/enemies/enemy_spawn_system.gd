@@ -18,7 +18,7 @@ extends Node3D
 # An instantiation of the Zombie Scene
 @onready var zombie_instance 
 
-# Coun of how many locations Zombies can spawn from
+# Count of how many locations Zombies can spawn from
 @onready var spawn_points_count
 
 # Store the random number
@@ -46,16 +46,16 @@ func zombiesLeftDecrement():
 	zombies_left_count -= 1
 
 # Function to call when a player unlocks an area on the map
-# so we need to add the new spawn points based on where he is
+# so we need to add the new spawn points based on where he is still
 func refreshSpawnLocations():
-	print("Refresh locations")
+	#print("Refresh locations")
 	# Initialize spawn_points_count to 0
 	spawn_points_count = 0
 	# Get the amount of child spawn points in the node
 	for child in get_children():
 		if child is Node3D:
 			spawn_points_count += 1
-	print("Refresh End")
+	#print("Refresh End")
 
 # Function to handle variables before round starts
 func startNextRound():
@@ -91,6 +91,9 @@ func _on_zombie_spawn_timer_timeout() -> void:
 	spawnZombieAtLocation(getSpawnLocation())
 	# Increment zombies left count by 1
 	zombies_left_count += 1
-	print("Spawned Zombie")
+	#print("Spawned Zombie")
 	# Reset Timer
 	zombie_spawn_timer.start()
+
+func decrementZombieLeftCount():
+	zombies_left_count -= 1

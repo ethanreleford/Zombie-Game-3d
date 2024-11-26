@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nvc6kpkff6u8"
-path.s3tc="res://.godot/imported/colormap.png-d41520c822febf766315ce4e5119e58c.s3tc.ctex"
+uid="uid://bpf7sliiei2cu"
+path="res://.godot/imported/colormap.png-8b268fc52e1f7a3d9160b81fde13166f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/map/graveyardKit/Models/GLB format/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-d41520c822febf766315ce4e5119e58c.s3tc.ctex"]
+source_file="res://assets/map/graveyardKit/Models/FBX format/Textures/colormap.png"
+dest_files=["res://.godot/imported/colormap.png-8b268fc52e1f7a3d9160b81fde13166f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

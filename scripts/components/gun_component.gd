@@ -6,8 +6,8 @@ var canShoot : bool = true
 @onready var ray_cast_component: RayCast3D = $"../RayCastComponent"
 var weapon_dictionary_script = preload("res://scripts/guns/weapon_dictionary.gd").new()
 @onready var pistol_animations: Node3D = $"../PistolAnimations"
-
-
+@export var point_component: Node
+@export var enemy_spawn_system: Node3D
 
 func _ready() -> void:
 	initializePlayerWeapons()
@@ -42,7 +42,7 @@ func shoot():
 	# If checkActiveAmmoEmpty() is false and canShoot is true, SHOOT!
 	if !checkActiveAmmoEmpty() and canShoot:
 		pistol_animations.play_animations("Scene")
-		print("successfully shoot")
+		#print("successfully shoot")
 		# Set canShoot to false to add delay between shoots i.e. firerate
 		canShoot = false
 		currentWeapon.ammo_component.activeAmmoCurrentSize -= 1
@@ -51,15 +51,18 @@ func shoot():
 			var collider = ray_cast_component.get_collider()
 			var health_component = collider.health_component
 			if health_component.has_method("takeDamage"):
-				health_component.takeDamage(currentWeapon.ammo_component.baseDamage)
-
+				if(health_component.takeDamage(currentWeapon.ammo_component.baseDamage)):
+					enemy_spawn_system.decrementZombieLeftCount()
+					point_component.addPointsOnKill()
+				else:
+					point_component.addPointsOnDamage()
 		canShoot = true
 
 # Reload Function
 func reload():
 	# If checkReserveAmmoEmpty() is false and canReloadWeapon() is true, then reload
 	if !checkReserveAmmoEmpty() and canReloadWeapon():
-		print("Reloaded Weapon")
+		#print("Reloaded Weapon")
 		var ammoNeeded = currentWeapon.ammo_component.activeAmmoMaxSize - currentWeapon.ammo_component.activeAmmoCurrentSize
 		if currentWeapon.ammo_component.reserveAmmoCurrentSize >= ammoNeeded:
 			currentWeapon.ammo_component.activeAmmoCurrentSize = currentWeapon.ammo_component.activeAmmoMaxSize
@@ -68,7 +71,8 @@ func reload():
 			currentWeapon.ammo_component.activeAmmoCurrentSize += currentWeapon.ammo_component.reserveAmmoCurrentSize
 			currentWeapon.ammo_component.reserveAmmoCurrentSize = 0
 	else:
-		print("Out of Ammo")
+		pass
+		#print("Out of Ammo")
 
 # Function to handle ammunition after player shoots
 func ammuntionUsed():
@@ -77,7 +81,7 @@ func ammuntionUsed():
 # Function to pick up a new weapon and swap it out 
 # Effectively deleting currently held weapon to pick up new one
 func swapWeapon(newWeaponScene):
-	print("swapWeapon")
+	#print("swapWeapon")
 	
 	# Find index of currentWeapon to swap out
 	var index = weaponsList.find(currentWeapon)
@@ -93,7 +97,7 @@ func swapWeapon(newWeaponScene):
 			add_child(currentWeapon)
 			weaponsList[i] = currentWeapon
 			weaponsList[i].visible = true
-			print(weaponsList)
+			#print(weaponsList)
 			return
 		else:
 			weaponsList[i].visible = false
@@ -107,7 +111,7 @@ func swapWeapon(newWeaponScene):
 	add_child(currentWeapon)
 	# Update the weaponsList with the new weapon instance
 	weaponsList[index] = currentWeapon
-	print(weaponsList)
+	#print(weaponsList)
 
 # Function to handle the physical mesh showing hiding of weapons
 func swapCurrentWeaponAnimation(oldWeapon, newWeapon):
@@ -120,12 +124,12 @@ func swapCurrentWeaponAnimation(oldWeapon, newWeapon):
 # Function to switch between weapons the player currently has
 func swapCurrentWeapon(newWeapon):
 	swapCurrentWeaponAnimation(currentWeapon, newWeapon)
-	print("swapcurrentweapon")
+	#print("swapcurrentweapon")
 	currentWeapon = newWeapon
 
 # Function to initialize player weapons
 func initializePlayerWeapons():
-	print("initializePlayerWeapons")
+	#print("initializePlayerWeapons")
 	weaponsList = [null, null]
 	currentWeapon = weaponsList[0]
 
@@ -143,7 +147,7 @@ func checkActiveAmmoEmpty():
 
 # Returns true if activeAmmo is less than its activeAmmoMaxSize, else false if it equals it
 func canReloadWeapon():
-	print("Can Reload Weapon Function")
+	#print("Can Reload Weapon Function")
 	if currentWeapon.ammo_component.activeAmmoCurrentSize < currentWeapon.ammo_component.activeAmmoMaxSize:
 		return true
 	return false
@@ -155,7 +159,8 @@ func findWeaponID(ID: String):
 	if newWeaponScene:
 		swapWeapon(newWeaponScene)  # Swap to the new weapon scene if it exists
 	else:
-		print("Weapon ID not found: " + ID)
+		pass
+		#print("Weapon ID not found: " + ID)
 		
 func getCurrentWeaponStats() -> Dictionary:
 	if currentWeapon != null:

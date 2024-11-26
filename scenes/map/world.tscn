@@ -45,6 +45,12 @@ environment = SubResource("Environment_8k8aa")
 [node name="player" parent="." instance=ExtResource("4_e3tu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, 5)
 
+[node name="UIComponent" parent="player" index="0" node_paths=PackedStringArray("spawn_system")]
+spawn_system = NodePath("../../EnemySpawnSystem")
+
+[node name="GunComponent" parent="player/Camera3D" index="3" node_paths=PackedStringArray("enemy_spawn_system")]
+enemy_spawn_system = NodePath("../../../EnemySpawnSystem")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 

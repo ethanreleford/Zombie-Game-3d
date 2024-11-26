@@ -24,7 +24,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		print("moving")
+		#print("moving")
 		# Adjust the yaw and pitch based on mouse movement
 		rotation_degrees_x -= event.relative.x * sensitivity.x
 		rotation_degrees_y -= event.relative.y * sensitivity.y
